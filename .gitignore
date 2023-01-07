@@ -1,3 +1,13 @@
+# Project sources
+c_stack
+c_stack_test
+main.c
+*.gc*
+create_funcs.sh
+
+# VS Code
+.vscode
+
 # Prerequisites
 *.d
 
