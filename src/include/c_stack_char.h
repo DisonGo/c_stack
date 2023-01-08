@@ -15,8 +15,8 @@ bool char_c_stack_valid(c_stack_char* stack);
 bool char_c_stack_empty(c_stack_char* stack);
 size_t char_c_stack_size(c_stack_char* stack);
 char* char_c_stack_top(c_stack_char* stack);
-void char_c_stack_push(c_stack_char* stack, char value);
-void char_c_stack_pop(c_stack_char* stack);
+int char_c_stack_push(c_stack_char* stack, char value);
+int char_c_stack_pop(c_stack_char* stack);
 void char_c_stack_remove(c_stack_char* stack);
 
 #endif  // C_STACK_CHAR_H_

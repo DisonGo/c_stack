@@ -15,8 +15,8 @@ bool double_c_stack_valid(c_stack_double* stack);
 bool double_c_stack_empty(c_stack_double* stack);
 size_t double_c_stack_size(c_stack_double* stack);
 double* double_c_stack_top(c_stack_double* stack);
-void double_c_stack_push(c_stack_double* stack, double value);
-void double_c_stack_pop(c_stack_double* stack);
+int double_c_stack_push(c_stack_double* stack, double value);
+int double_c_stack_pop(c_stack_double* stack);
 void double_c_stack_remove(c_stack_double* stack);
 
 #endif  // C_STACK_DOUBLE_H_
