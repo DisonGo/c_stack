@@ -10,9 +10,8 @@
 #endif
 
 #ifndef C_STACK_MAX_SIZE
-#define C_STACK_MAX_SIZE 1 << 23
+#define C_STACK_MAX_SIZE 8388608
 #endif
-
 typedef enum _bool { true = 1, false = 0 } bool;
 
 enum c_stack_error {
