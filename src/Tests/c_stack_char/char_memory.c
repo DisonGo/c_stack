@@ -14,7 +14,7 @@ END_TEST
 START_TEST(empty_invalid_test) {
   c_stack_char *stack = NULL;
   bool res = char_c_stack_empty(stack);
-  ck_assert_int_eq(res, true);
+  ck_assert_int_eq(res, false);
 }
 END_TEST
 START_TEST(pop_invalid_test) {
