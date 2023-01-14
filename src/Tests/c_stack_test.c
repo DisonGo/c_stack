@@ -18,6 +18,7 @@ void print_stack_int(c_stack_int *stack) {
   printf("%15s:", "Values");
   for (size_t i = 0; i < stack->length; i++)
     printf("%i%s", stack->values[i], (i + 1 < stack->length) ? " " : "\n");
+  printf("\n");
 }
 void print_stack_double(c_stack_double *stack) {
   printf("%15s:\n", "Stack info");
@@ -25,7 +26,8 @@ void print_stack_double(c_stack_double *stack) {
   printf("%15s:%- 15li\n", "Allocated size", stack->aloc_size);
   printf("%15s:", "Values");
   for (size_t i = 0; i < stack->length; i++)
-    printf("%lf%s", stack->values[i], (i + 1 < stack->length) ? " " : "\n");
+    printf("%lf%s", stack->values[i], (i + 1 < stack->length) ? " " : "");
+  printf("\n");
 }
 void print_stack_char(c_stack_char *stack) {
   printf("%15s:\n", "Stack info");
@@ -33,7 +35,9 @@ void print_stack_char(c_stack_char *stack) {
   printf("%15s:%- 15li\n", "Allocated size", stack->aloc_size);
   printf("%15s:", "Values");
   size_t size = stack->length > 10000 ? 10000 : stack->length;
+  if (!size) printf(" Empty");
   for (size_t i = 0; i < size; i++) printf("%c", stack->values[i]);
+  printf("\n");
 }
 void run_testcase(Suite *testcase) {
   static int counter_testcase = 1;
