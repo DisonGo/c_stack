@@ -6,6 +6,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "time.h"
+#define TEST_COUNT 100
 /* Int stack tests*/
 
 Suite *suite_int_memory(void);
