@@ -8,7 +8,7 @@ int int_c_stack_push(c_stack_int* stack, int value) {
       stack->length--;
       return C_STACK_BAD_SIZE;
     } else {
-      stack->values = realloc(stack->values, stack->aloc_size);
+      stack->values = realloc(stack->values, stack->aloc_size * sizeof(int));
       if (!stack->values) return C_STACK_NULL_REF;
     }
   }
