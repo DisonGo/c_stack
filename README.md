@@ -1,22 +1,18 @@
-<div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="C_stack" />
-
-  &#xa0;
-</div>
-
 <h1 align="center">C_stack</h1>
 
 <p align="center">
+  <img alt="Github top language" src="https://img.shields.io/badge/platform-macos%20%7C%20linux-green">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/DisonGo/c_stack?color=56BEB8">
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/DisonGo/c_stack?color=56BEB8">
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/DisonGo/c_stack?color=56BEB8">
 </p>
 
 <p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#about">About</a> &#xa0; | &#xa0; 
+  <a href="#features">Features</a> &#xa0; | &#xa0;
+  <a href="#requirements">Requirements</a> &#xa0; | &#xa0;
+  <a href="#starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#build">Build</a> &#xa0; | &#xa0;
   <a href="https://github.com/DisonGo" target="_blank">Author</a>
 </p>
 
@@ -32,9 +28,17 @@ Type support:
 
 | Type | Supported |
 | ---- | --------- |
-| int  |     Yes   |
-| double  |     Yes   |
-| char  |     Yes   |
+| `int`  |     Yes   |
+| `double`  |     Yes   |
+| `char`  |     Yes   |
+
+Separate headers for each type:
+
+```c
+#include "c_stack_int.h"
+#include "c_stack_double.h"
+#include "c_stack_char.h"
+```
 
 Macros of dynamic type functions call:
 
@@ -58,7 +62,7 @@ Macros of dynamic type functions call:
 
 ## Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Brew](https://brew.sh) installed.
+Before starting, you need to have [Git](https://git-scm.com) and [Brew](https://brew.sh) installed.
 
 ## Starting ##
 
@@ -73,6 +77,31 @@ $ cd c_stack
 $ cd src
 ```
 
+## Build ##
+```bash
+# Build static lib c_stack.a in ../build dir
+$ make
+
+# Or
+$ make all
+
+# Or
+$ make c_stack.a
+
+# Build lib with debug
+$ make clean debug c_stack.a
+
+# Build and run tests
+$ make test
+
+# Create and open code coverage report
+$ make gcov_report
+
+# (Optional)
+# Create your own main.c in src dir
+# Build main.c in ./src (exe name ./c_stack)
+$ make main
+```
 
 Made by <a href="https://github.com/DisonGo" target="_blank">Godison</a>
 
