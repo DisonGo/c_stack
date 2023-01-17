@@ -58,11 +58,13 @@ void run_testcase(Suite *testcase) {
 }
 
 void run_tests(void) {
-  Suite *list_cases[] = {// suite_int_memory,
-                         //  suite_int_functionality,
-                         //  suite_double_memory,
-                         //  suite_double_functionality,
-                         suite_char_memory(), suite_char_functionality(), NULL};
+  Suite *list_cases[] = {suite_int_memory(),
+                         suite_int_functionality(),
+                         suite_char_memory(),
+                         suite_char_functionality(),
+                         suite_double_memory(),
+                         suite_double_functionality(),
+                         NULL};
   for (Suite **current_testcase = list_cases; *current_testcase != NULL;
        current_testcase++) {
     run_testcase(*current_testcase);
