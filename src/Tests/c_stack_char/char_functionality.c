@@ -1,9 +1,8 @@
 #include "c_stack_test.h"
-#define TEST_COUNT 100
 START_TEST(init_test) {
   c_stack_char stack = {0};
   size_t size = rand() % 100000;
-  int res = char_c_stack_init(size, &stack);
+  int res = st_init(char, size, &stack);
   ck_assert_int_eq(res, C_STACK_OK);
 }
 END_TEST
