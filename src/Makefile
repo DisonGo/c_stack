@@ -25,7 +25,6 @@ LIB_OBJ 		= $(patsubst %.c,$(O_DIR)/%.o, $(LIB_SOURCES))
 TEST_OBJ 		= $(patsubst %.c,$(O_DIR)/%.o, $(TEST_SOURCES))
 OBJ				= $(LIB_SOURCES)
 OBJ				+=  $(TEST_OBJ)
-# DEBUG_SOURCE= main.c
 DEBUG_SOURCE= $(TEST_SRC)
 
 ifeq ($(UNAME_S),Linux)
@@ -52,6 +51,12 @@ clear:
 clean:
 	rm -rf *.out $(shell find ./obj -name '*.o')
 	rm -rf *.a
+	rm -rf c_stack
+	rm -rf $(shell find ./obj -name '*.gc*')
+	rm -rf ./gcov/*.o ./gcov/*.gc*
+	rm -rf ./*.gc*
+	rm -rf report*
+	rm -rf $(BUILD_DIR)/*.a
 obj: $(OBJ)
 debug:
 	$(eval Debug = -g)
@@ -69,8 +74,13 @@ $(BUILD_DIR)/$(TEST_NAME).a: $(TEST_OBJ)
 $(TEST_NAME).a: $(BUILD_DIR)/$(TEST_NAME).a
 
 test: set_test $(PROJECT_NAME)
+	./$(PROJECT_NAME)
 
 main: set_main $(PROJECT_NAME)
+
+set_report_gcc:
+	$(eval gcc += -fprofile-arcs -ftest-coverage -fPIC)
+	@echo s21_decimal:Check build
 
 set_main:
 	$(eval DEBUG_SOURCE = main.c)
@@ -78,7 +88,15 @@ set_main:
 
 set_test:
 	$(eval DEBUG_SOURCE = $(TEST_SRC))
+move_gc_files:
+	mv $(shell find $(O_DIR)/${LIB_SRC_DIR} -name '*.gc*') ./gcov
 
+gcov_report: clean set_report_gcc test
+	gcov *.c ${LIB_SRC_DIR}/*.c -o $(ODIR)/${LIB_SRC_DIR}
+	make move_gc_files
+	lcov -t ./gcov -o report.info -c -d ./gcov
+	genhtml -o report report.info
+	$(OPEN_CMD) ./report/index.html
 
 $(PROJECT_NAME): $(BUILD_DIR)/$(PROJECT_NAME).a $(BUILD_DIR)/$(TEST_NAME).a
 	$(gcc) $(DEBUG_SOURCE) -I${LIB_INC_DIR} -I${TEST_INC_DIR} -o $@ ${TEST_CHECK_F} $^
